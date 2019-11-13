@@ -1,0 +1,39 @@
+<div class="partieEnCours" *ngIf="!this.Endgame">
+    <div class="PlayerName">
+        <p *ngIf="isCurrentPlayer1()">C'est le tour de <b>Clément</b></p>   
+        <p *ngIf="!isCurrentPlayer1()">C'est le tour de <b>Pierre</b></p>
+    </div>
+    <div class="score">
+        <p *ngIf="isCurrentPlayer1()">
+            <b>Pion blanc : {{getPionJ1()}}</b> 
+            <br>
+            Pion noir : {{getPionJ2()}}
+        </p>
+        <p *ngIf="!isCurrentPlayer1()">
+            Pion blanc : {{getPionJ1()}}
+            <br>
+            <b>Pion noir : {{getPionJ2()}}</b>
+        </p>    
+    </div>
+</div>
+<div class="Avengers" *ngIf="this.Endgame">
+    <div class="Player1Win" *ngIf="player1Win()">
+        <p>Clément est un Dieu, il a gagné avec {{getPionJ1()}} </p>
+    </div>
+    <div class="Player2Win" *ngIf="player2Win()">
+        <p>Pierre est un Dieu, il a gagné avec {{getPionJ2()}} </p>
+    </div>
+    <div class="Egalite" *ngIf="equality()">
+        <p>Clément et Pierre sont pénibles... Ils n'arrivent pas à se déparatager {{getPionJ1()}} chacuns !</p>
+    </div>
+    <button
+    (click)="rs.initBoard()"
+    >
+        Recommencer ! 
+        
+    </button>
+
+</div>
+
+
+

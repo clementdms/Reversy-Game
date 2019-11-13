@@ -1,0 +1,18 @@
+<h2></h2>
+<section *ngIf="ObservableReversi | async">
+    <table>
+    <tbody>
+        <tr *ngFor="let L of getBoard(); let x = index;">
+            <td *ngFor="let C of L; trackBy : trackIndex; let y = index;"
+            [class.canPlayHere] = "canPlay(x,y)"
+            (click) = "playHere(x,y)"
+            >
+                    <app-pion *ngIf="notEmpty(C)" [player]="getPlayer(C)"></app-pion>
+                    
+            </td>
+        </tr>    
+    </tbody>
+    </table>
+    
+    <app-commentateur [currentPlayer]="this.rs.turn()" [board]="getBoard()" [Endgame]="this.rs.finPartie()"></app-commentateur>
+</section>
